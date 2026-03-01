@@ -7,42 +7,19 @@ The goal of this baseline implementation is to provide a **working, reproducible
 
 ---
 
-## Project Structure
-
-
-autoregressive-textgen-transformer/
-├── configs/
-│ └── baseline.yaml # Default configuration
-├── data/
-│ ├── raw/
-│ │ └── shakespeare.txt # Raw text data
-│ └── processed/ # Preprocessed binary datasets and vocab
-├── results/
-│ ├── checkpoints/ # Saved model checkpoints
-│ └── plots/ # Training curves
-├── scripts/
-│ ├── train.py # Training script
-│ └── generate.py # Inference / text generation script
-├── src/
-│ ├── dataset.py # Dataset utilities
-│ └── model.py # CharTransformer model implementation
-└── README.md
-
-
----
-
 ## Setup Instructions
 
-1. **Install dependencies** (Python 3.10+ recommended):
+1. **Install dependencies**
 
 ```bash
 pip install torch numpy matplotlib tqdm pyyaml
+```
+2. **Prepare data:**
 
-Prepare data:
-
+```bash
 python scripts/prepare_data.py
-
-This script downloads or loads the raw Shakespeare text.
+```
+This script loads the raw Shakespeare text.
 
 Normalizes and tokenizes the text.
 
@@ -50,10 +27,12 @@ Creates a character-level vocabulary.
 
 Saves processed datasets as binary .bin files and the vocabulary as vocab.json.
 
-Training
+3. **Training**
 Standard Training
-python scripts/train.py --config configs/baseline.yaml
 
+```bash
+python scripts/train.py --config configs/baseline.yaml
+```
 Trains the model according to the configuration file.
 
 Saves checkpoints after each epoch in results/checkpoints/.
@@ -62,16 +41,26 @@ Computes validation loss at the end of each epoch.
 
 Saves learning curves in results/plots/training_curve.png.
 
-Sanity Check (Overfit Tiny)
-python scripts/train.py --config configs/baseline.yaml --overfit_tiny
+4. **Baseline model training**
 
+```bash
+python scripts/train.py --config configs/mini.yaml
+```
+mini.yaml configuration for a small model for a baseline
+
+ensure faster training, shows model functionality
+
+5. **Sanity Check (Overfit Tiny)**
+```bash
+python scripts/train.py --config configs/baseline.yaml --overfit_tiny
+```
 Runs a small “sanity check” on a tiny batch.
 
 Demonstrates that the model can overfit a small subset.
 
-Useful for testing your pipeline and hyperparameters.
+Useful for testing of pipeline and hyperparameters.
 
-Configuration
+6. **Configuration**
 
 Configuration is loaded from a YAML file (configs/baseline.yaml).
 
@@ -95,8 +84,10 @@ weight_decay: optimizer weight decay
 
 epochs: number of training epochs
 
-Inference / Generation
+7. **Inference / Generation**
+```bash
 python scripts/generate.py
+```
 
 Loads a trained checkpoint (e.g., results/checkpoints/model_epoch_0.pt).
 
@@ -105,13 +96,13 @@ Loads vocabulary from data/processed/vocab.json.
 Generates character-level text from a prompt:
 
 prompt = "to be or not to be"
-generated_text = generate(prompt, max_new_tokens=200)
+generated_text = generate(prompt, max_new_tokens=100)
 
 Default generation uses greedy decoding.
 
-Can be extended to top-k or temperature sampling.
+Will be extended to top-k or temperature sampling.
 
-Evaluation
+8. **Evaluation**
 
 Training and validation losses are computed after each epoch.
 
@@ -119,13 +110,7 @@ Loss curves are saved as plots for reproducibility.
 
 Sanity checks provide quantitative metrics (loss) and qualitative samples (generated text).
 
-Example sanity check output:
-
-Step 0 | Loss: 4.3397
-Step 250 | Loss: 1.1557
-Step 450 | Loss: 0.0927
-Final tiny loss: 0.0530
-Reproducibility Notes
+9. **Conclusion**
 
 The repository provides clean scripts:
 
@@ -135,21 +120,13 @@ generate.py – independent inference pipeline for generating text.
 
 Baseline implementation supports:
 
-CPU-friendly options.
+-CPU-friendly options.
 
-Mini-model training for faster experimentation (~10 min).
+-Mini-model training for faster experimentation (~20 min).
 
-Overfit-tiny sanity check for verifying correctness.
+-Overfit-tiny sanity check for verifying correctness.
 
-All dependencies, data preprocessing, and configuration are documented for reproducibility.
-
-References
-
-GPT-style transformer for character-level language modeling.
-
-PyTorch documentation: https://pytorch.org/docs/stable/index.html
-
-Shakespeare dataset: Project Gutenberg
+-All dependencies, data preprocessing, and configuration are documented for reproducibility.
 
 
 ---
