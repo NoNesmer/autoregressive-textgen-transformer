@@ -1,0 +1,9 @@
+vocab_size: 65
+block_size: 256
+batch_size: 32
+d_model: 128
+n_heads: 4
+n_layers: 2
+learning_rate: 3e-4
+weight_decay: 0.01
+epochs: 10

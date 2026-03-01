@@ -1,0 +1,15 @@
+# Dataset
+block_size: 128       # sequence length
+batch_size: 64        # small batches
+subset_size: 100000   # use only first 100k characters
+
+# Model
+vocab_size: 65        # will be automatically loaded from vocab
+d_model: 64           # embedding dimension
+n_heads: 2            # number of attention heads
+n_layers: 1           # very small model
+
+# Training
+learning_rate: 3e-4
+weight_decay: 0.0
+epochs: 3             # 2–3 epochs enough for mini-training

@@ -96,7 +96,7 @@ def encode_text(text, stoi):
     Convert text into numpy array of integer token IDs.
     """
     print("Encoding text to integer tokens...")
-    encoded = np.array([stoi[c] for c in text], dtype=np.uint16)
+    encoded = np.array([stoi[c] for c in text], dtype=np.int64)
     print(f"Encoded data shape: {encoded.shape}")
     return encoded
 
@@ -124,17 +124,26 @@ def split_data(encoded): # need to be improved further
     return train_data, val_data, test_data
 
 
+import torch
+
 def save_processed_data(train_data, val_data, test_data, stoi):
     """
-    Save binary datasets and vocabulary to disk.
+    Save datasets and vocabulary using PyTorch serialization.
     """
 
     print("Saving processed data...")
 
-    # Save binary token arrays
-    train_data.tofile(os.path.join(PROCESSED_DIR, "train.bin"))
-    val_data.tofile(os.path.join(PROCESSED_DIR, "val.bin"))
-    test_data.tofile(os.path.join(PROCESSED_DIR, "test.bin"))
+    os.makedirs(PROCESSED_DIR, exist_ok=True)
+
+    # Convert to PyTorch tensors
+    train_tensor = torch.from_numpy(train_data)
+    val_tensor = torch.from_numpy(val_data)
+    test_tensor = torch.from_numpy(test_data)
+
+    # Save tensors
+    torch.save(train_tensor, os.path.join(PROCESSED_DIR, "train.bin"))
+    torch.save(val_tensor, os.path.join(PROCESSED_DIR, "val.bin"))
+    torch.save(test_tensor, os.path.join(PROCESSED_DIR, "test.bin"))
 
     # Save vocabulary
     with open(os.path.join(PROCESSED_DIR, "vocab.json"), "w", encoding="utf-8") as f:
