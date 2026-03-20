@@ -1,0 +1,116 @@
+{
+  "test_perplexity": 4.382906811495011,
+  "gen_length": 512,
+  "prompts": [
+    {
+      "prompt": "to be or not to be",
+      "text_preview": "to be or not to be a man of the state.\\n\\ncassius.\\ni will not see thee the strange of the state of the state,\\nand the strength of the strength of the state of the state,\\nand the strength of the strength",
+      "metrics": {
+        "distinct_2": 0.12476370510396975,
+        "distinct_3": 0.16287878787878787,
+        "first_repeat_position": 13,
+        "repeat_fraction": 0.8178368121442126,
+        "longest_repeated_substring": 183
+      }
+    },
+    {
+      "prompt": "o romeo, romeo! wherefore art thou romeo?",
+      "text_preview": "o romeo, romeo! wherefore art thou romeo?\\n\\nprince.\\ni will not see thee the common of the world,\\nand the strange of the streets of the state of the state,\\nand the strength of the strength of the state ",
+      "metrics": {
+        "distinct_2": 0.17028985507246377,
+        "distinct_3": 0.23049001814882034,
+        "first_repeat_position": 8,
+        "repeat_fraction": 0.7472727272727273,
+        "longest_repeated_substring": 146
+      }
+    },
+    {
+      "prompt": "all the world's a stage",
+      "text_preview": "all the world's a stage.\\n\\ncassio.\\ni will not see thee the common of the world,\\nand the strength of the streets of the state of the state,\\nand the strength of the state of the state of the state,\\nand t",
+      "metrics": {
+        "distinct_2": 0.1348314606741573,
+        "distinct_3": 0.17636022514071295,
+        "first_repeat_position": 48,
+        "repeat_fraction": 0.8026315789473685,
+        "longest_repeated_substring": 220
+      }
+    },
+    {
+      "prompt": "now is the winter of our discontent",
+      "text_preview": "now is the winter of our discontents.\\n\\ncassio.\\ni will not see thee the world of the world,\\nand the strange of the strength of the state of the state,\\nand the strength of the strength of the state of t",
+      "metrics": {
+        "distinct_2": 0.1336996336996337,
+        "distinct_3": 0.181651376146789,
+        "first_repeat_position": 61,
+        "repeat_fraction": 0.7977941176470589,
+        "longest_repeated_substring": 219
+      }
+    },
+    {
+      "prompt": "friends, romans, countrymen, lend me your ears",
+      "text_preview": "friends, romans, countrymen, lend me your ears,\\nand then the state of the streets of the state,\\nand the strength of the streets of the state of the state,\\nand the strength of the strength of the state",
+      "metrics": {
+        "distinct_2": 0.11131059245960502,
+        "distinct_3": 0.1474820143884892,
+        "first_repeat_position": 56,
+        "repeat_fraction": 0.8378378378378378,
+        "longest_repeated_substring": 256
+      }
+    },
+    {
+      "prompt": "the quality of mercy is not strained",
+      "text_preview": "the quality of mercy is not strained.\\n\\ncassius.\\ni will not see thee the state of the world,\\nand the strange of the strength of the state of the state,\\nand the strength of the strength of the state of ",
+      "metrics": {
+        "distinct_2": 0.14076782449725778,
+        "distinct_3": 0.17399267399267399,
+        "first_repeat_position": 54,
+        "repeat_fraction": 0.8073394495412844,
+        "longest_repeated_substring": 219
+      }
+    },
+    {
+      "prompt": "if music be the food of love, play on",
+      "text_preview": "if music be the food of love, play on the state,\\nand the strength of the streets of the state,\\nand the strength of the streets of the state of the state,\\nand the strength of the strength of the state ",
+      "metrics": {
+        "distinct_2": 0.10036496350364964,
+        "distinct_3": 0.12431444241316271,
+        "first_repeat_position": 37,
+        "repeat_fraction": 0.8644688644688645,
+        "longest_repeated_substring": 248
+      }
+    },
+    {
+      "prompt": "we are such stuff as dreams are made on",
+      "text_preview": "we are such stuff as dreams are made on the state.\\n\\ncassio.\\ni will not see thee the strange of the world,\\nand the strange of the strength of the state of the state,\\nand the strength of the strength of",
+      "metrics": {
+        "distinct_2": 0.14363636363636365,
+        "distinct_3": 0.19854280510018216,
+        "first_repeat_position": 27,
+        "repeat_fraction": 0.7791970802919708,
+        "longest_repeated_substring": 207
+      }
+    },
+    {
+      "prompt": "shall i compare thee to a summer's day?",
+      "text_preview": "shall i compare thee to a summer's day?\\n\\ncassio.\\ni will not see thee the world of the world.\\n\\n[_exeunt._]\\n\\nscene ii. a room in the same.\\n\\nenter a street.\\n\\nenter a servant.\\n\\ncoriolanus.\\ni will not see ",
+      "metrics": {
+        "distinct_2": 0.21818181818181817,
+        "distinct_3": 0.30965391621129323,
+        "first_repeat_position": 61,
+        "repeat_fraction": 0.6441605839416058,
+        "longest_repeated_substring": 58
+      }
+    },
+    {
+      "prompt": "double, double toil and trouble",
+      "text_preview": "double, double toil and trouble the state of the state,\\nand the strength of the strength of the state of the state,\\nand the strength of the state of the state of the state,\\nand the strength of the str",
+      "metrics": {
+        "distinct_2": 0.08302583025830258,
+        "distinct_3": 0.11090573012939002,
+        "first_repeat_position": 8,
+        "repeat_fraction": 0.8740740740740741,
+        "longest_repeated_substring": 191
+      }
+    }
+  ]
+}

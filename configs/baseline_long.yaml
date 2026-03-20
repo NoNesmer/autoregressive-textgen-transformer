@@ -1,0 +1,18 @@
+# Optional context-length ablation: longer block, fewer examples per epoch (stride = block_size)
+# vocab_size is read from vocab.json at runtime
+
+block_size: 512
+batch_size: 16
+stride: null
+
+d_model: 128
+n_heads: 4
+n_layers: 2
+dropout: 0.1
+
+learning_rate: 3e-4
+weight_decay: 0.01
+epochs: 10
+patience: 3
+
+run_name: "baseline_long"

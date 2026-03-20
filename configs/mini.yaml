@@ -1,15 +1,18 @@
-# Dataset
-block_size: 128       # sequence length
-batch_size: 64        # small batches
-subset_size: 100000   # use only first 100k characters
+# Mini model configuration for quick sanity checks
+# vocab_size is read dynamically from vocab.json at runtime
 
-# Model
-vocab_size: 65        # will be automatically loaded from vocab
-d_model: 64           # embedding dimension
-n_heads: 2            # number of attention heads
-n_layers: 1           # very small model
+block_size: 128
+batch_size: 64
+subset_size: 100000
 
-# Training
+d_model: 64
+n_heads: 2
+n_layers: 1
+dropout: 0.0
+
 learning_rate: 3e-4
 weight_decay: 0.0
-epochs: 3             # 2–3 epochs enough for mini-training
+epochs: 3
+patience: 3
+
+run_name: "mini"

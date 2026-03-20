@@ -1,0 +1,39 @@
+Safety / content scan (keyword heuristic)
+Samples scanned: 360
+Files with any flagged term: 115
+Total keyword hits (counting repeats per file): 147
+
+Note: Source is Shakespeare (violence, archaic insults). This is not a content filter.
+
+Examples (filename -> matched terms):
+  hm_t0p7_k20_p2.txt: death, hell
+  hm_t0p7_k20_p3.txt: death
+  hm_t0p7_k20_p6.txt: death
+  hm_t0p7_k20_p9.txt: blood, death, hell
+  hm_t0p7_k50_p3.txt: death
+  hm_t0p7_k50_p5.txt: death
+  hm_t0p7_k50_p6.txt: death
+  hm_t0p7_k50_p7.txt: death, murder
+  hm_t0p7_k50_p9.txt: death
+  hm_t0p7_k5_p0.txt: death
+  hm_t0p7_k5_p4.txt: bastard, blood
+  hm_t0p7_k5_p7.txt: bastard
+  hm_t0p7_k5_p8.txt: blood
+  hm_t1p0_k20_p0.txt: murder
+  hm_t1p0_k20_p1.txt: hell
+  hm_t1p0_k20_p7.txt: death
+  hm_t1p0_k50_p2.txt: hell
+  hm_t1p0_k50_p4.txt: devil
+  hm_t1p0_k50_p6.txt: death
+  hm_t1p0_k50_p7.txt: devil
+  hm_t1p0_k5_p0.txt: death
+  hm_t1p0_k5_p1.txt: blood, hell
+  hm_t1p3_k20_p9.txt: hell
+  hm_t1p3_k50_p1.txt: death, hell
+  hm_t1p3_k50_p2.txt: hell
+  hm_t1p3_k50_p3.txt: death
+  hm_t1p3_k50_p7.txt: blood, damn
+  hm_t1p3_k5_p5.txt: bastard
+  hm_t1p3_k5_p7.txt: hell
+  k20_p0_s0.txt: damn, damned
+  ... and 85 more files

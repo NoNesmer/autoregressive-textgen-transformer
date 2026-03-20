@@ -1,0 +1,71 @@
+{
+  "0.7": {
+    "5": {
+      "distinct_2": 0.33294132730671117,
+      "distinct_3": 0.6226077941124144,
+      "first_repeat_position": 44.1,
+      "repeat_fraction": 0.22822141746308788,
+      "longest_repeated_substring": 13.1
+    },
+    "20": {
+      "distinct_2": 0.3641486431751357,
+      "distinct_3": 0.6918790387248187,
+      "first_repeat_position": 39.9,
+      "repeat_fraction": 0.1572396686243937,
+      "longest_repeated_substring": 14.2
+    },
+    "50": {
+      "distinct_2": 0.362532387529195,
+      "distinct_3": 0.6906469314138994,
+      "first_repeat_position": 50.1,
+      "repeat_fraction": 0.15462513437848077,
+      "longest_repeated_substring": 10.4
+    }
+  },
+  "1.0": {
+    "5": {
+      "distinct_2": 0.34201300596463907,
+      "distinct_3": 0.6600000057533493,
+      "first_repeat_position": 42.1,
+      "repeat_fraction": 0.17871875832958511,
+      "longest_repeated_substring": 11.1
+    },
+    "20": {
+      "distinct_2": 0.3934649533577844,
+      "distinct_3": 0.7519814867148982,
+      "first_repeat_position": 54.0,
+      "repeat_fraction": 0.09894946241101532,
+      "longest_repeated_substring": 8.2
+    },
+    "50": {
+      "distinct_2": 0.40037021538611456,
+      "distinct_3": 0.7612722850998109,
+      "first_repeat_position": 49.1,
+      "repeat_fraction": 0.10094549848983907,
+      "longest_repeated_substring": 8.4
+    }
+  },
+  "1.3": {
+    "5": {
+      "distinct_2": 0.3686185423422147,
+      "distinct_3": 0.700874806831671,
+      "first_repeat_position": 56.4,
+      "repeat_fraction": 0.13559268265116495,
+      "longest_repeated_substring": 9.0
+    },
+    "20": {
+      "distinct_2": 0.42708871532877224,
+      "distinct_3": 0.8015123495490265,
+      "first_repeat_position": 44.8,
+      "repeat_fraction": 0.06452248646943343,
+      "longest_repeated_substring": 7.3
+    },
+    "50": {
+      "distinct_2": 0.44308939353371946,
+      "distinct_3": 0.8202451904379686,
+      "first_repeat_position": 63.0,
+      "repeat_fraction": 0.05883825881992351,
+      "longest_repeated_substring": 6.8
+    }
+  }
+}

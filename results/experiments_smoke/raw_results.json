@@ -1,0 +1,254 @@
+[
+  {
+    "prompt": "to be or not to be",
+    "strategy": "temperature",
+    "temperature": 0.5,
+    "sample_index": 0,
+    "text": "to be or not to be so that i may be bride to forget.\n\nenter mistress quickly lady,",
+    "metrics": {
+      "distinct_2": 0.7530864197530864,
+      "distinct_3": 0.9,
+      "first_repeat_position": 13,
+      "repeat_fraction": 0.06329113924050633,
+      "longest_repeated_substring": 6
+    }
+  },
+  {
+    "prompt": "to be or not to be",
+    "strategy": "temperature",
+    "temperature": 0.7,
+    "sample_index": 0,
+    "text": "to be or not to be sure,\nthat shall be devil for claudio in my country,\nand the di",
+    "metrics": {
+      "distinct_2": 0.7283950617283951,
+      "distinct_3": 0.9,
+      "first_repeat_position": 13,
+      "repeat_fraction": 0.05063291139240506,
+      "longest_repeated_substring": 6
+    }
+  },
+  {
+    "prompt": "to be or not to be",
+    "strategy": "temperature",
+    "temperature": 1.0,
+    "sample_index": 0,
+    "text": "to be or not to beauty till:\nmy army proport for, love, fie!-fellow!\n\nking richard",
+    "metrics": {
+      "distinct_2": 0.8024691358024691,
+      "distinct_3": 0.95,
+      "first_repeat_position": 13,
+      "repeat_fraction": 0.02531645569620253,
+      "longest_repeated_substring": 5
+    }
+  },
+  {
+    "prompt": "to be or not to be",
+    "strategy": "temperature",
+    "temperature": 1.3,
+    "sample_index": 0,
+    "text": "to be or not to beauty within my owner! would hold,\nwhere is this apstant in justi",
+    "metrics": {
+      "distinct_2": 0.7530864197530864,
+      "distinct_3": 0.925,
+      "first_repeat_position": 13,
+      "repeat_fraction": 0.02531645569620253,
+      "longest_repeated_substring": 5
+    }
+  },
+  {
+    "prompt": "to be or not to be",
+    "strategy": "temperature",
+    "temperature": 1.5,
+    "sample_index": 0,
+    "text": "to be or not to beauty witching.\n'tis a lower. o, lodovician-pevrible.\nawain justi",
+    "metrics": {
+      "distinct_2": 0.8765432098765432,
+      "distinct_3": 0.95,
+      "first_repeat_position": 13,
+      "repeat_fraction": 0.02531645569620253,
+      "longest_repeated_substring": 5
+    }
+  },
+  {
+    "prompt": "to be or not to be",
+    "strategy": "topk",
+    "top_k": 1,
+    "sample_index": 0,
+    "text": "to be or not to be a man of the state.\n\ncassius.\ni will not see thee the strange o",
+    "metrics": {
+      "distinct_2": 0.6419753086419753,
+      "distinct_3": 0.7875,
+      "first_repeat_position": 13,
+      "repeat_fraction": 0.1518987341772152,
+      "longest_repeated_substring": 7
+    }
+  },
+  {
+    "prompt": "to be or not to be",
+    "strategy": "topk",
+    "top_k": 5,
+    "sample_index": 0,
+    "text": "to be or not to bear my lord, i have\nthee wife in the world would not drink.\nand s",
+    "metrics": {
+      "distinct_2": 0.691358024691358,
+      "distinct_3": 0.875,
+      "first_repeat_position": 13,
+      "repeat_fraction": 0.05063291139240506,
+      "longest_repeated_substring": 5
+    }
+  },
+  {
+    "prompt": "to be or not to be",
+    "strategy": "topk",
+    "top_k": 20,
+    "sample_index": 0,
+    "text": "to be or not to be fight\nthat they love damned with mortality.\nchide another place",
+    "metrics": {
+      "distinct_2": 0.7777777777777778,
+      "distinct_3": 0.9125,
+      "first_repeat_position": 13,
+      "repeat_fraction": 0.0379746835443038,
+      "longest_repeated_substring": 6
+    }
+  },
+  {
+    "prompt": "to be or not to be",
+    "strategy": "topk",
+    "top_k": 50,
+    "sample_index": 0,
+    "text": "to be or not to be mine eyes,\nthat seven gentleman, and the fliery sentence, of th",
+    "metrics": {
+      "distinct_2": 0.7407407407407407,
+      "distinct_3": 0.9125,
+      "first_repeat_position": 13,
+      "repeat_fraction": 0.0379746835443038,
+      "longest_repeated_substring": 6
+    }
+  },
+  {
+    "prompt": "o romeo, romeo! wherefore art thou romeo?",
+    "strategy": "temperature",
+    "temperature": 0.5,
+    "sample_index": 0,
+    "text": "o romeo, romeo! wherefore art thou romeo?\n\nlucentio.\nwhy, have you shall be so good night with her of thi",
+    "metrics": {
+      "distinct_2": 0.7307692307692307,
+      "distinct_3": 0.8932038834951457,
+      "first_repeat_position": 8,
+      "repeat_fraction": 0.058823529411764705,
+      "longest_repeated_substring": 6
+    }
+  },
+  {
+    "prompt": "o romeo, romeo! wherefore art thou romeo?",
+    "strategy": "temperature",
+    "temperature": 0.7,
+    "sample_index": 0,
+    "text": "o romeo, romeo! wherefore art thou romeo?\n\nlucentio.\nso you think the great sense, to death,\nand to his s",
+    "metrics": {
+      "distinct_2": 0.6634615384615384,
+      "distinct_3": 0.8640776699029126,
+      "first_repeat_position": 8,
+      "repeat_fraction": 0.06862745098039216,
+      "longest_repeated_substring": 6
+    }
+  },
+  {
+    "prompt": "o romeo, romeo! wherefore art thou romeo?",
+    "strategy": "temperature",
+    "temperature": 1.0,
+    "sample_index": 0,
+    "text": "o romeo, romeo! wherefore art thou romeo?\n\nlucentio.\nso? god cold me; then. the field derive chief of thy",
+    "metrics": {
+      "distinct_2": 0.6923076923076923,
+      "distinct_3": 0.8737864077669902,
+      "first_repeat_position": 8,
+      "repeat_fraction": 0.06862745098039216,
+      "longest_repeated_substring": 6
+    }
+  },
+  {
+    "prompt": "o romeo, romeo! wherefore art thou romeo?",
+    "strategy": "temperature",
+    "temperature": 1.3,
+    "sample_index": 0,
+    "text": "o romeo, romeo! wherefore art thou romeo? not have miscry, and lept\nby enf. the fieldy 'em; by me, our hi",
+    "metrics": {
+      "distinct_2": 0.7403846153846154,
+      "distinct_3": 0.9029126213592233,
+      "first_repeat_position": 8,
+      "repeat_fraction": 0.058823529411764705,
+      "longest_repeated_substring": 6
+    }
+  },
+  {
+    "prompt": "o romeo, romeo! wherefore art thou romeo?",
+    "strategy": "temperature",
+    "temperature": 1.5,
+    "sample_index": 0,
+    "text": "o romeo, romeo! wherefore art thou romeo? nou\nhawks i bry have lopt,-\ntend. the fieldy 'ring chief of thi",
+    "metrics": {
+      "distinct_2": 0.7596153846153846,
+      "distinct_3": 0.9029126213592233,
+      "first_repeat_position": 8,
+      "repeat_fraction": 0.058823529411764705,
+      "longest_repeated_substring": 6
+    }
+  },
+  {
+    "prompt": "o romeo, romeo! wherefore art thou romeo?",
+    "strategy": "topk",
+    "top_k": 1,
+    "sample_index": 0,
+    "text": "o romeo, romeo! wherefore art thou romeo?\n\nprince.\ni will not see thee the common of the world,\nand the s",
+    "metrics": {
+      "distinct_2": 0.6634615384615384,
+      "distinct_3": 0.8155339805825242,
+      "first_repeat_position": 8,
+      "repeat_fraction": 0.12745098039215685,
+      "longest_repeated_substring": 6
+    }
+  },
+  {
+    "prompt": "o romeo, romeo! wherefore art thou romeo?",
+    "strategy": "topk",
+    "top_k": 5,
+    "sample_index": 0,
+    "text": "o romeo, romeo! wherefore art thou romeo?\n\npompey.\nand therefore time is a month of storm.\n\ncoriolanus.\nw",
+    "metrics": {
+      "distinct_2": 0.6826923076923077,
+      "distinct_3": 0.8446601941747572,
+      "first_repeat_position": 8,
+      "repeat_fraction": 0.11764705882352941,
+      "longest_repeated_substring": 9
+    }
+  },
+  {
+    "prompt": "o romeo, romeo! wherefore art thou romeo?",
+    "strategy": "topk",
+    "top_k": 20,
+    "sample_index": 0,
+    "text": "o romeo, romeo! wherefore art thou romeo?\n\ndromio of syracuse.\nand not be forest her goes\nin breakness; d",
+    "metrics": {
+      "distinct_2": 0.75,
+      "distinct_3": 0.883495145631068,
+      "first_repeat_position": 8,
+      "repeat_fraction": 0.06862745098039216,
+      "longest_repeated_substring": 6
+    }
+  },
+  {
+    "prompt": "o romeo, romeo! wherefore art thou romeo?",
+    "strategy": "topk",
+    "top_k": 50,
+    "sample_index": 0,
+    "text": "o romeo, romeo! wherefore art thou romeo?\n\nlear.\ni love what thou wilt thou remedy.\n\nlafew.\nah, my lord o",
+    "metrics": {
+      "distinct_2": 0.625,
+      "distinct_3": 0.7864077669902912,
+      "first_repeat_position": 8,
+      "repeat_fraction": 0.14705882352941177,
+      "longest_repeated_substring": 8
+    }
+  }
+]

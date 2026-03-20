@@ -1,9 +1,17 @@
-vocab_size: 65
+# Baseline model configuration
+# vocab_size is read dynamically from vocab.json at runtime
+
 block_size: 256
 batch_size: 32
+stride: 8
 d_model: 128
 n_heads: 4
 n_layers: 2
+dropout: 0.1
+
 learning_rate: 3e-4
 weight_decay: 0.01
-epochs: 10
+epochs: 12
+patience: 4
+
+run_name: "baseline"
