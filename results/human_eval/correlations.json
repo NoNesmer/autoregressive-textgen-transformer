@@ -1,0 +1,37 @@
+{
+  "n_complete_rows": 15,
+  "vs_distinct_3": {
+    "likert_coherence": {
+      "pearson_r": 0.44010520952705423,
+      "spearman_rho": 0.4684038922989549,
+      "n": 15
+    },
+    "likert_diversity": {
+      "pearson_r": 0.895909660164907,
+      "spearman_rho": 0.9021937088963173,
+      "n": 15
+    },
+    "likert_overall": {
+      "pearson_r": 0.7138454157305038,
+      "spearman_rho": 0.7581673093152131,
+      "n": 15
+    }
+  },
+  "vs_repeat_fraction": {
+    "likert_coherence": {
+      "pearson_r": -0.6237735418908743,
+      "spearman_rho": -0.6132223631495076,
+      "n": 15
+    },
+    "likert_diversity": {
+      "pearson_r": -0.8568682888511744,
+      "spearman_rho": -0.881577097572239,
+      "n": 15
+    },
+    "likert_overall": {
+      "pearson_r": -0.7560114110195627,
+      "spearman_rho": -0.7831677012949707,
+      "n": 15
+    }
+  }
+}

@@ -10,6 +10,8 @@ n_heads: 2
 n_layers: 1
 dropout: 0.0
 
+seed: 42
+
 learning_rate: 3e-4
 weight_decay: 0.0
 epochs: 3

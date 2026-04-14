@@ -3,8 +3,14 @@ __pycache__/
 *.pyo
 data/raw/
 data/processed/*.bin
-results/checkpoints/
-*.pt
+
+# Checkpoints (*.pt) are tracked in this repo (best_model.pt per run).
+
+# Packaged workspace uploads — not part of source.
+sync_upload.tgz
+*.tgz
+
+.claude/
 .DS_Store
 *.egg-info/
 dist/

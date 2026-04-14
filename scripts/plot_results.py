@@ -11,6 +11,7 @@ import glob
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import numpy as np
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -190,6 +191,199 @@ def plot_ablation(agg_baseline, agg_large, out_dir, label_a="baseline", label_b=
     plt.close(fig)
 
 
+def _rankdata(a):
+    """Average ranks for ties (SciPy-compatible enough for our small grids)."""
+    a = np.asarray(a, dtype=float)
+    n = a.size
+    if n == 0:
+        return np.zeros_like(a, dtype=float)
+    order = np.argsort(a, kind="mergesort")
+    ranks = np.empty(n, dtype=float)
+    i = 0
+    while i < n:
+        j = i
+        while j + 1 < n and a[order[j + 1]] == a[order[i]]:
+            j += 1
+        avg_rank = (i + j) / 2.0 + 1.0  # 1-based ranks
+        ranks[order[i : j + 1]] = avg_rank
+        i = j + 1
+    return ranks
+
+
+def spearman_rho(x, y):
+    x = np.asarray(x, dtype=float)
+    y = np.asarray(y, dtype=float)
+    if x.shape != y.shape or x.size < 2:
+        return float("nan")
+    rx = _rankdata(x)
+    ry = _rankdata(y)
+    rx = rx - rx.mean()
+    ry = ry - ry.mean()
+    denom = np.sqrt((rx * rx).sum()) * np.sqrt((ry * ry).sum())
+    if denom == 0:
+        return float("nan")
+    return float((rx * ry).sum() / denom)
+
+
+def _aligned_series_from_agg(agg_a, agg_b, key, metric):
+    """Return (xs, ya, yb) for temperature or top_k sweeps."""
+    if key == "temperature":
+        xs = sorted(agg_a["temperature"].keys(), key=lambda x: float(x))
+        ya = [agg_a["temperature"][t][metric] for t in xs]
+        yb = [agg_b["temperature"][t][metric] for t in xs]
+        xf = [float(t) for t in xs]
+        return xf, ya, yb
+    if key == "top_k":
+        xs = sorted(agg_a["top_k"].keys(), key=lambda x: int(x))
+        xi = [int(k) for k in xs]
+        ya = [agg_a["top_k"][k][metric] for k in xs]
+        yb = [agg_b["top_k"][k][metric] for k in xs]
+        return xi, ya, yb
+    raise ValueError(f"Unknown sweep key: {key}")
+
+
+def plot_temperature_compare(agg_a, agg_b, out_dir, label_a="baseline", label_b="large"):
+    tf, d2_a, d2_b = _aligned_series_from_agg(agg_a, agg_b, "temperature", "distinct_2")
+    _, d3_a, d3_b = _aligned_series_from_agg(agg_a, agg_b, "temperature", "distinct_3")
+    _, rep_a, rep_b = _aligned_series_from_agg(agg_a, agg_b, "temperature", "repeat_fraction")
+
+    fig, ax = plt.subplots(figsize=(7, 4.5), dpi=300)
+    ax.plot(tf, d2_a, "o--", label=f"{label_a} distinct-2")
+    ax.plot(tf, d2_b, "o-", label=f"{label_b} distinct-2")
+    ax.plot(tf, d3_a, "s--", label=f"{label_a} distinct-3")
+    ax.plot(tf, d3_b, "s-", label=f"{label_b} distinct-3")
+    ax.set_xlabel("Temperature")
+    ax.set_ylabel("Distinct-n")
+    ax.set_title("Compare: temperature vs diversity")
+    ax.legend(ncol=2, fontsize=8)
+    fig.tight_layout()
+    fig.savefig(os.path.join(out_dir, "compare_temperature_vs_diversity.png"))
+    plt.close(fig)
+
+    fig, ax = plt.subplots(figsize=(7, 4.5), dpi=300)
+    ax.plot(tf, rep_a, "o--", color="C2", label=f"{label_a} repeat-4gram")
+    ax.plot(tf, rep_b, "o-", color="C3", label=f"{label_b} repeat-4gram")
+    ax.set_xlabel("Temperature")
+    ax.set_ylabel("4-gram repeat fraction")
+    ax.set_title("Compare: temperature vs repetition")
+    ax.legend()
+    fig.tight_layout()
+    fig.savefig(os.path.join(out_dir, "compare_temperature_vs_repetition.png"))
+    plt.close(fig)
+
+
+def plot_topk_compare(agg_a, agg_b, out_dir, label_a="baseline", label_b="large"):
+    k_int, d2_a, d2_b = _aligned_series_from_agg(agg_a, agg_b, "top_k", "distinct_2")
+    _, d3_a, d3_b = _aligned_series_from_agg(agg_a, agg_b, "top_k", "distinct_3")
+    _, rep_a, rep_b = _aligned_series_from_agg(agg_a, agg_b, "top_k", "repeat_fraction")
+
+    fig, ax = plt.subplots(figsize=(7, 4.5), dpi=300)
+    ax.plot(k_int, d2_a, "o--", label=f"{label_a} distinct-2")
+    ax.plot(k_int, d2_b, "o-", label=f"{label_b} distinct-2")
+    ax.plot(k_int, d3_a, "s--", label=f"{label_a} distinct-3")
+    ax.plot(k_int, d3_b, "s-", label=f"{label_b} distinct-3")
+    ax.set_xlabel("Top-k")
+    ax.set_ylabel("Distinct-n")
+    ax.set_title("Compare: top-k vs diversity")
+    ax.legend(ncol=2, fontsize=8)
+    fig.tight_layout()
+    fig.savefig(os.path.join(out_dir, "compare_topk_vs_diversity.png"))
+    plt.close(fig)
+
+    fig, ax = plt.subplots(figsize=(7, 4.5), dpi=300)
+    ax.plot(k_int, rep_a, "o--", color="C2", label=f"{label_a} repeat-4gram")
+    ax.plot(k_int, rep_b, "o-", color="C3", label=f"{label_b} repeat-4gram")
+    ax.set_xlabel("Top-k")
+    ax.set_ylabel("4-gram repeat fraction")
+    ax.set_title("Compare: top-k vs repetition")
+    ax.legend()
+    fig.tight_layout()
+    fig.savefig(os.path.join(out_dir, "compare_topk_vs_repetition.png"))
+    plt.close(fig)
+
+
+def plot_heatmap_compare(hm_a_path, hm_b_path, out_dir, label_a="baseline", label_b="large"):
+    with open(hm_a_path, "r", encoding="utf-8") as f:
+        a = json.load(f)
+    with open(hm_b_path, "r", encoding="utf-8") as f:
+        b = json.load(f)
+
+    temps = sorted(a.keys(), key=lambda x: float(x))
+    ks = sorted(a[temps[0]].keys(), key=lambda x: int(x))
+    mat_a = [[a[t][k]["distinct_3"] for k in ks] for t in temps]
+    mat_b = [[b[t][k]["distinct_3"] for k in ks] for t in temps]
+    mat_a = np.asarray(mat_a, dtype=float)
+    mat_b = np.asarray(mat_b, dtype=float)
+
+    fig, axes = plt.subplots(1, 2, figsize=(10.5, 4.5), dpi=300, sharey=True)
+    for ax, mat, title in (
+        (axes[0], mat_a, label_a),
+        (axes[1], mat_b, label_b),
+    ):
+        im = ax.imshow(mat, aspect="auto", cmap="viridis")
+        ax.set_xticks(range(len(ks)))
+        ax.set_xticklabels([str(k) for k in ks])
+        ax.set_yticks(range(len(temps)))
+        ax.set_yticklabels([str(t) for t in temps])
+        ax.set_xlabel("Top-k")
+        ax.set_ylabel("Temperature")
+        ax.set_title(f"{title}: distinct-3 heatmap")
+        fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+
+    fig.suptitle("Compare: T × k heatmaps (distinct-3)")
+    fig.tight_layout()
+    fig.savefig(os.path.join(out_dir, "compare_heatmap_diversity.png"))
+    plt.close(fig)
+
+    diff = mat_b - mat_a
+    fig, ax = plt.subplots(figsize=(6.8, 4.6), dpi=300)
+    im = ax.imshow(diff, aspect="auto", cmap="coolwarm")
+    ax.set_xticks(range(len(ks)))
+    ax.set_xticklabels([str(k) for k in ks])
+    ax.set_yticks(range(len(temps)))
+    ax.set_yticklabels([str(t) for t in temps])
+    ax.set_xlabel("Top-k")
+    ax.set_ylabel("Temperature")
+    ax.set_title(f"Heatmap difference (distinct-3): {label_b} − {label_a}")
+    fig.colorbar(im, ax=ax)
+    fig.tight_layout()
+    fig.savefig(os.path.join(out_dir, "compare_heatmap_diversity_diff.png"))
+    plt.close(fig)
+
+
+def compute_compare_spearman(agg_a, agg_b):
+    """Spearman correlations between aligned sweeps + flattened heatmap cells (if shapes match)."""
+    out = {}
+
+    tf, d3a, d3b = _aligned_series_from_agg(agg_a, agg_b, "temperature", "distinct_3")
+    _, repa, repb = _aligned_series_from_agg(agg_a, agg_b, "temperature", "repeat_fraction")
+    out["temperature_distinct3"] = spearman_rho(np.asarray(d3a), np.asarray(d3b))
+    out["temperature_repeat_fraction"] = spearman_rho(np.asarray(repa), np.asarray(repb))
+
+    k, d3a, d3b = _aligned_series_from_agg(agg_a, agg_b, "top_k", "distinct_3")
+    _, repa, repb = _aligned_series_from_agg(agg_a, agg_b, "top_k", "repeat_fraction")
+    out["topk_distinct3"] = spearman_rho(np.asarray(d3a), np.asarray(d3b))
+    out["topk_repeat_fraction"] = spearman_rho(np.asarray(repa), np.asarray(repb))
+
+    return out
+
+
+def compute_heatmap_cell_spearman(hm_a_path, hm_b_path):
+    with open(hm_a_path, "r", encoding="utf-8") as f:
+        a = json.load(f)
+    with open(hm_b_path, "r", encoding="utf-8") as f:
+        b = json.load(f)
+    temps = sorted(a.keys(), key=lambda x: float(x))
+    ks = sorted(a[temps[0]].keys(), key=lambda x: int(x))
+    xa = []
+    xb = []
+    for t in temps:
+        for k in ks:
+            xa.append(float(a[t][k]["distinct_3"]))
+            xb.append(float(b[t][k]["distinct_3"]))
+    return spearman_rho(np.asarray(xa), np.asarray(xb))
+
+
 def main():
     parser = argparse.ArgumentParser(description="Plot experiment results")
     parser.add_argument("--aggregated", type=str,
@@ -204,8 +398,38 @@ def main():
                         help="Optional CSV log (e.g. results/logs/training_log_baseline.csv)")
     parser.add_argument("--compare_large", type=str, default="",
                         help="Second aggregated_metrics.json for ablation (e.g. experiments_large)")
+    parser.add_argument(
+        "--compare",
+        type=str,
+        default="",
+        help="Alias for --compare_large (second aggregated_metrics.json)",
+    )
     parser.add_argument("--heatmap_metrics", type=str, default="",
                         help="Path to heatmap_metrics.json (default: sibling of --aggregated)")
+    parser.add_argument(
+        "--compare_heatmap_metrics",
+        type=str,
+        default="",
+        help="Second heatmap_metrics.json for compare heatmaps (default: sibling of --compare_large/--compare)",
+    )
+    parser.add_argument(
+        "--compare_label_a",
+        type=str,
+        default="baseline",
+        help="Legend label for primary aggregated metrics",
+    )
+    parser.add_argument(
+        "--compare_label_b",
+        type=str,
+        default="large",
+        help="Legend label for secondary aggregated metrics",
+    )
+    parser.add_argument(
+        "--spearman_out",
+        type=str,
+        default="",
+        help="Optional JSON path to write Spearman correlations for compare mode",
+    )
     args = parser.parse_args()
 
     os.makedirs(args.plots_dir, exist_ok=True)
@@ -228,12 +452,48 @@ def main():
         plot_heatmap(hm_path, args.plots_dir)
         print(f"Heatmap saved from {hm_path}")
 
-    if args.compare_large and os.path.isfile(args.compare_large):
+    compare_path = args.compare_large or args.compare
+    if compare_path and os.path.isfile(compare_path):
         agg_b = load_agg(args.aggregated) if os.path.isfile(args.aggregated) else None
-        agg_l = load_agg(args.compare_large)
+        agg_l = load_agg(compare_path)
         if agg_b:
-            plot_ablation(agg_b, agg_l, args.plots_dir)
+            # Back-compat: keep the older distinct-3-only ablation plots.
+            plot_ablation(agg_b, agg_l, args.plots_dir, label_a=args.compare_label_a, label_b=args.compare_label_b)
             print("Ablation plots saved.")
+
+            # Phase-2 compare overlays (temperature/top-k + repetition).
+            plot_temperature_compare(
+                agg_b, agg_l, args.plots_dir, label_a=args.compare_label_a, label_b=args.compare_label_b
+            )
+            plot_topk_compare(agg_b, agg_l, args.plots_dir, label_a=args.compare_label_a, label_b=args.compare_label_b)
+            print("Compare sweep plots saved.")
+
+            hm_a = args.heatmap_metrics
+            if not hm_a and args.aggregated and os.path.isfile(args.aggregated):
+                hm_a = os.path.join(os.path.dirname(args.aggregated), "heatmap_metrics.json")
+            hm_b = args.compare_heatmap_metrics
+            if not hm_b:
+                hm_b = os.path.join(os.path.dirname(compare_path), "heatmap_metrics.json")
+            if hm_a and hm_b and os.path.isfile(hm_a) and os.path.isfile(hm_b):
+                plot_heatmap_compare(hm_a, hm_b, args.plots_dir, label_a=args.compare_label_a, label_b=args.compare_label_b)
+                print("Compare heatmap plots saved.")
+            else:
+                hm_a = None
+                hm_b = None
+
+            if args.spearman_out:
+                spearman = {"aggregated": compute_compare_spearman(agg_b, agg_l)}
+                if hm_a and hm_b:
+                    spearman["heatmap_distinct3_cells"] = compute_heatmap_cell_spearman(hm_a, hm_b)
+                else:
+                    spearman["heatmap_distinct3_cells"] = None
+
+                parent = os.path.dirname(args.spearman_out)
+                if parent:
+                    os.makedirs(parent, exist_ok=True)
+                with open(args.spearman_out, "w", encoding="utf-8") as f:
+                    json.dump(spearman, f, ensure_ascii=False, indent=2)
+                print(f"Spearman summary: {args.spearman_out}")
 
     if args.training_log and os.path.isfile(args.training_log):
         out = os.path.join(args.plots_dir, "training_curve.png")

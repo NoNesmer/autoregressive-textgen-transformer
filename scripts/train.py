@@ -5,6 +5,8 @@ import json
 import csv
 import time
 import yaml
+import random
+import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, Subset
@@ -33,6 +35,18 @@ def load_vocab_size():
     with open(vocab_path, "r", encoding="utf-8") as f:
         stoi = json.load(f)
     return len(stoi)
+
+
+def seed_everything(seed: int):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+    # Prefer determinism (important for small-model ablations).
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
 
 
 @torch.no_grad()
@@ -64,9 +78,18 @@ def save_checkpoint(path, epoch, model, optimizer, train_loss, val_loss, config)
 
 def main(args):
     config = load_config(args.config)
+    if args.epochs_override is not None:
+        config["epochs"] = int(args.epochs_override)
+    if args.patience_override is not None:
+        config["patience"] = int(args.patience_override)
     vocab_size = load_vocab_size()
     config["vocab_size"] = vocab_size
     print(f"Vocab size (from vocab.json): {vocab_size}")
+
+    seed = int(config.get("seed", 42))
+    config["seed"] = seed
+    seed_everything(seed)
+    print(f"Seed: {seed}")
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device}")
@@ -89,8 +112,20 @@ def main(args):
         train_dataset = Subset(train_dataset, range(max_train))
         val_dataset = Subset(val_dataset, range(max_val))
 
-    train_loader = DataLoader(train_dataset, batch_size=config["batch_size"], shuffle=True)
-    val_loader = DataLoader(val_dataset, batch_size=config["batch_size"], shuffle=False)
+    # Deterministic DataLoader shuffling across runs.
+    dl_gen = torch.Generator()
+    dl_gen.manual_seed(seed)
+    train_loader = DataLoader(
+        train_dataset,
+        batch_size=config["batch_size"],
+        shuffle=True,
+        generator=dl_gen,
+    )
+    val_loader = DataLoader(
+        val_dataset,
+        batch_size=config["batch_size"],
+        shuffle=False,
+    )
 
     print(f"Train batches/epoch: {len(train_loader)}")
     print(f"Val batches/epoch:   {len(val_loader)}")
@@ -248,5 +283,9 @@ if __name__ == "__main__":
                         help="Path to YAML config file")
     parser.add_argument("--overfit_tiny", action="store_true",
                         help="Run sanity check: overfit a single batch")
+    parser.add_argument("--epochs_override", type=int, default=None,
+                        help="Override config epochs (useful for calibration runs)")
+    parser.add_argument("--patience_override", type=int, default=None,
+                        help="Override config patience (useful for calibration runs)")
     args = parser.parse_args()
     main(args)

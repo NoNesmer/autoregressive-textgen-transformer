@@ -1,0 +1,9 @@
+{
+  "aggregated": {
+    "temperature_distinct3": 0.9999999999999998,
+    "temperature_repeat_fraction": 0.9999999999999998,
+    "topk_distinct3": 0.7999999999999998,
+    "topk_repeat_fraction": 0.9999999999999998
+  },
+  "heatmap_distinct3_cells": 0.9166666666666665
+}

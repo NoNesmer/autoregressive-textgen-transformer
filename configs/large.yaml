@@ -1,16 +1,16 @@
-# Large model configuration for ablation study
-# vocab_size is read dynamically from vocab.json at runtime
-
 block_size: 256
-batch_size: 32
+batch_size: 128       
+stride: 8             
 d_model: 256
 n_heads: 4
 n_layers: 4
 dropout: 0.1
 
+seed: 42
+
 learning_rate: 3e-4
 weight_decay: 0.01
-epochs: 10
-patience: 3
+epochs: 12            
+patience: 4
 
 run_name: "large"

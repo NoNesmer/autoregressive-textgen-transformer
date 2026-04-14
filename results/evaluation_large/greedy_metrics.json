@@ -1,0 +1,116 @@
+{
+  "test_perplexity": 3.982854921263527,
+  "gen_length": 512,
+  "prompts": [
+    {
+      "prompt": "to be or not to be",
+      "text_preview": "to be or not to be so strong a man that i am a man in the\\nworld, and i will be a man of the world, and i will be a man to be a\\nman of the world.\\n\\nprince.\\ni will not be so strongly as i am a man that i",
+      "metrics": {
+        "distinct_2": 0.1890359168241966,
+        "distinct_3": 0.2935606060606061,
+        "first_repeat_position": 13,
+        "repeat_fraction": 0.6470588235294118,
+        "longest_repeated_substring": 44
+      }
+    },
+    {
+      "prompt": "o romeo, romeo! wherefore art thou romeo?",
+      "text_preview": "o romeo, romeo! wherefore art thou romeo?\\n\\nromeo.\\nthe senate of the commonwealth,\\nthat i may be so strong a stranger than the third,\\nthe threat'ning the strangers of the sea,\\nand the state of the sea,",
+      "metrics": {
+        "distinct_2": 0.17028985507246377,
+        "distinct_3": 0.25226860254083483,
+        "first_repeat_position": 8,
+        "repeat_fraction": 0.7054545454545454,
+        "longest_repeated_substring": 115
+      }
+    },
+    {
+      "prompt": "all the world's a stage",
+      "text_preview": "all the world's a stage of the world,\\nand the world hath been the world of the world.\\n\\nprince.\\nwhat is the matter?\\n\\nfalstaff.\\nthe world is the world that i have seen the world to him.\\n\\nprince.\\ni will ",
+      "metrics": {
+        "distinct_2": 0.19662921348314608,
+        "distinct_3": 0.3076923076923077,
+        "first_repeat_position": 26,
+        "repeat_fraction": 0.6259398496240601,
+        "longest_repeated_substring": 40
+      }
+    },
+    {
+      "prompt": "now is the winter of our discontent",
+      "text_preview": "now is the winter of our discontent,\\nand the which we have seen the world of the world,\\nand then we have seen the world of the world.\\n\\ncade.\\ni will not be so strong as i am a man.\\n\\ncade.\\ni will not be",
+      "metrics": {
+        "distinct_2": 0.21978021978021978,
+        "distinct_3": 0.344954128440367,
+        "first_repeat_position": 40,
+        "repeat_fraction": 0.5882352941176471,
+        "longest_repeated_substring": 39
+      }
+    },
+    {
+      "prompt": "friends, romans, countrymen, lend me your ears",
+      "text_preview": "friends, romans, countrymen, lend me your ears,\\nand therefore i will be some other tongue\\nto see your honour with the streets of the state.\\n\\ncountess.\\nwhat is the matter?\\n\\nclown.\\nthe matter is the mat",
+      "metrics": {
+        "distinct_2": 0.21723518850987433,
+        "distinct_3": 0.34172661870503596,
+        "first_repeat_position": 78,
+        "repeat_fraction": 0.6018018018018018,
+        "longest_repeated_substring": 108
+      }
+    },
+    {
+      "prompt": "the quality of mercy is not strained",
+      "text_preview": "the quality of mercy is not strained.\\n\\ncassius.\\ni am sorry that i have seen the prince,\\nand therefore i have seen the prince of the prince.\\n\\nbrutus.\\ni am sorry that i have seen the prince of the court",
+      "metrics": {
+        "distinct_2": 0.17550274223034734,
+        "distinct_3": 0.23443223443223443,
+        "first_repeat_position": 76,
+        "repeat_fraction": 0.7376146788990826,
+        "longest_repeated_substring": 55
+      }
+    },
+    {
+      "prompt": "if music be the food of love, play on",
+      "text_preview": "if music be the food of love, play on the world, and the\\nworld is a good world of his heart. i will be so strong a boy to be a\\ncommodity. i will not be so strong a boy to be a boy to be a boy.\\n\\npage.\\n",
+      "metrics": {
+        "distinct_2": 0.19160583941605838,
+        "distinct_3": 0.2595978062157221,
+        "first_repeat_position": 37,
+        "repeat_fraction": 0.7032967032967034,
+        "longest_repeated_substring": 109
+      }
+    },
+    {
+      "prompt": "we are such stuff as dreams are made on",
+      "text_preview": "we are such stuff as dreams are made on the world.\\n\\ncade.\\ni will not stay the world to see the world.\\n\\ncade.\\ni will not be so strong as i am a man.\\n\\ncade.\\ni will not be so strong as i am a man.\\n\\ndick.",
+      "metrics": {
+        "distinct_2": 0.17454545454545456,
+        "distinct_3": 0.2586520947176685,
+        "first_repeat_position": 27,
+        "repeat_fraction": 0.6952554744525548,
+        "longest_repeated_substring": 75
+      }
+    },
+    {
+      "prompt": "shall i compare thee to a summer's day?",
+      "text_preview": "shall i compare thee to a summer's day?\\n\\ncaesar.\\ni will not say the world i will be satisfied.\\n\\nantony.\\ni will not say the world i will be satisfied.\\n\\ncaesar.\\ni will not be so strong as i am a man.\\n\\na",
+      "metrics": {
+        "distinct_2": 0.1709090909090909,
+        "distinct_3": 0.2331511839708561,
+        "first_repeat_position": 63,
+        "repeat_fraction": 0.7372262773722628,
+        "longest_repeated_substring": 90
+      }
+    },
+    {
+      "prompt": "double, double toil and trouble",
+      "text_preview": "double, double toil and trouble thee.\\n\\ncade.\\ni will not stay thee with thee.\\n\\ncade.\\ni will not stay thee with thee.\\n\\ncade.\\ni will not stay thee with thee.\\n\\ncade.\\ni will not stay thee for thy love.\\n\\nca",
+      "metrics": {
+        "distinct_2": 0.11070110701107011,
+        "distinct_3": 0.1367837338262477,
+        "first_repeat_position": 8,
+        "repeat_fraction": 0.8481481481481481,
+        "longest_repeated_substring": 224
+      }
+    }
+  ]
+}

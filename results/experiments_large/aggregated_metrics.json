@@ -1,0 +1,69 @@
+{
+  "temperature": {
+    "0.5": {
+      "distinct_2": 0.30935010306212185,
+      "distinct_3": 0.5727594384920205,
+      "first_repeat_position": 40.63333333333333,
+      "repeat_fraction": 0.2873426105238758,
+      "longest_repeated_substring": 17.733333333333334
+    },
+    "0.7": {
+      "distinct_2": 0.34966253398359,
+      "distinct_3": 0.6566990290298097,
+      "first_repeat_position": 44.1,
+      "repeat_fraction": 0.19869820416448186,
+      "longest_repeated_substring": 13.166666666666666
+    },
+    "1.0": {
+      "distinct_2": 0.37910616309611067,
+      "distinct_3": 0.7091453642390732,
+      "first_repeat_position": 39.66666666666667,
+      "repeat_fraction": 0.14829334582369236,
+      "longest_repeated_substring": 12.566666666666666
+    },
+    "1.3": {
+      "distinct_2": 0.42627743973925847,
+      "distinct_3": 0.7831838938607506,
+      "first_repeat_position": 68.13333333333334,
+      "repeat_fraction": 0.09218351322615356,
+      "longest_repeated_substring": 10.7
+    },
+    "1.5": {
+      "distinct_2": 0.45885019936535654,
+      "distinct_3": 0.8208991174540344,
+      "first_repeat_position": 68.33333333333333,
+      "repeat_fraction": 0.06462591292206661,
+      "longest_repeated_substring": 8.166666666666668
+    }
+  },
+  "top_k": {
+    "1": {
+      "distinct_2": 0.1816234627781922,
+      "distinct_3": 0.266281931660188,
+      "first_repeat_position": 37.6,
+      "repeat_fraction": 0.6890031596696218,
+      "longest_repeated_substring": 89.9
+    },
+    "5": {
+      "distinct_2": 0.3406288404612042,
+      "distinct_3": 0.6439277137722355,
+      "first_repeat_position": 38.8,
+      "repeat_fraction": 0.20097298880978426,
+      "longest_repeated_substring": 12.533333333333333
+    },
+    "20": {
+      "distinct_2": 0.3758065980199933,
+      "distinct_3": 0.7171366199376602,
+      "first_repeat_position": 50.06666666666667,
+      "repeat_fraction": 0.13758395586441668,
+      "longest_repeated_substring": 10.633333333333333
+    },
+    "50": {
+      "distinct_2": 0.385450140745282,
+      "distinct_3": 0.7185666291770524,
+      "first_repeat_position": 49.833333333333336,
+      "repeat_fraction": 0.1383195671007727,
+      "longest_repeated_substring": 10.766666666666667
+    }
+  }
+}
